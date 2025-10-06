@@ -190,6 +190,7 @@ button:hover { background-color: rgba(100,100,100,0.8); }
 <!-- Música -->
 <audio id="musicPlayer" loop>
   <source src="Nofueremix.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio.
 </audio>
 
 <script>
@@ -234,18 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   musicBtn.addEventListener('click', () => {
-    if (musicPlayer.paused) {
-      musicPlayer.play().catch(e => console.log('Error al reproducir:', e));
-    } else {
-      musicPlayer.pause();
-    }
-  });
-
-  document.addEventListener('click', function iniciarMusica() {
-    if (musicPlayer.paused) {
-      musicPlayer.play().catch(e => console.log('Error al reproducir automáticamente:', e));
-    }
-    document.removeEventListener('click', iniciarMusica);
+    musicPlayer.play().catch(e => {
+      console.log("Error al reproducir música:", e);
+      alert("Haz clic nuevamente en el botón de música para activarla.");
+    });
   });
 
   // Crear estrellas flotantes
@@ -268,16 +261,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       star.style.animation = `floatStar ${floatDuration}s linear infinite, twinkle ${twinkleDuration}s ease-in-out ${twinkleDelay}s infinite alternate`;
 
-      document.body.appendChild(star);
-    }
-  }
+      document.body.append
 
-  crearEstrellas();
-});
-</script>
-
-</body>
-</html>
 
 
 
